@@ -1,0 +1,5 @@
+nnpx hardhat flatten contracts/CryloToken.sol > CryloToken_flat.sol
+px hardhat flatten contracts/CryloToken.sol > CryloToken_flat.sDarrens-MBP:crylo-token BillyBobJnr$npx 
+hardhat flatten contracts/CryloToken.sol > CryloToken_flat.sol
+
+A
