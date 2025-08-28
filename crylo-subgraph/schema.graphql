@@ -1,0 +1,29 @@
+type TicketMinted @entity {
+  id: ID!
+  player: Bytes!
+  ticketId: BigInt!
+  numbers: [BigInt!]!
+  timestamp: BigInt!
+}
+
+type WinnerPaid @entity {
+  id: ID!
+  winner: Bytes!
+  amount: BigInt!
+  timestamp: BigInt!
+}
+
+type DrawExecuted @entity {
+  id: ID!
+  drawId: BigInt!
+  winningNumbers: [BigInt!]!
+  timestamp: BigInt!
+}
+
+type PrizeClaimed @entity {
+  id: ID!
+  claimer: Bytes!
+  ticketId: BigInt!
+  prizeAmount: BigInt!
+  timestamp: BigInt!
+}

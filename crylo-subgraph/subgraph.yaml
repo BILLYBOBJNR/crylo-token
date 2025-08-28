@@ -1,0 +1,35 @@
+specVersion: 0.0.5
+schema:
+  file: ./schema.graphql
+
+dataSources:
+  - kind: ethereum/contract
+    name: CryloLottoTicket
+    network: bsc
+    source:
+      address: "0xCe266f9b8a8F83A80caa3B7A987D20B598824E3E"
+      abi: CryloLottoTicket
+      startBlock: 39286000
+
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: typescript
+      entities:
+        - TicketMinted
+        - WinnerPaid
+        - DrawExecuted
+        - PrizeClaimed
+      abis:
+        - name: CryloLottoTicket
+          file: ./abis/CryloLottoTicket.json
+      eventHandlers:
+        - event: TicketMinted(indexed address,uint256,uint256[])
+          handler: handleTicketMinted
+        - event: WinnerPaid(indexed address,uint256)
+          handler: handleWinnerPaid
+        - event: DrawExecuted(indexed uint256,uint256[])
+          handler: handleDrawExecuted
+        - event: PrizeClaimed(indexed address,uint256,uint256)
+          handler: handlePrizeClaimed
+      file: ./src/mapping.ts
